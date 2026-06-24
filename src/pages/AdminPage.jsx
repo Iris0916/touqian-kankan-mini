@@ -85,6 +85,18 @@ function AdminPage({ config, onConfigSaved, onConfigReset }) {
     }));
   };
 
+  const updateHomeFeatureCard = (cardIndex, field, value) => {
+    setDraft((currentDraft) => ({
+      ...currentDraft,
+      homeContent: {
+        ...currentDraft.homeContent,
+        featureCards: currentDraft.homeContent.featureCards.map((card, index) =>
+          index === cardIndex ? { ...card, [field]: value } : card,
+        ),
+      },
+    }));
+  };
+
   const updateCompany = (companyIndex, field, value) => {
     setDraft((currentDraft) => ({
       ...currentDraft,
@@ -244,6 +256,30 @@ function AdminPage({ config, onConfigSaved, onConfigReset }) {
               onChange={(event) => updateHome("reminder", event.target.value)}
             />
           </label>
+        </div>
+
+        <div className="admin-section-title nested">
+          <h3>首页功能卡片</h3>
+        </div>
+        <div className="admin-experience-list">
+          {draft.homeContent.featureCards.map((card, index) => (
+            <div className="admin-experience-card" key={`${card.title}-${index}`}>
+              <label className="admin-wide-label">
+                <span>卡片标题</span>
+                <input
+                  value={card.title}
+                  onChange={(event) => updateHomeFeatureCard(index, "title", event.target.value)}
+                />
+              </label>
+              <label className="admin-wide-label">
+                <span>卡片描述</span>
+                <textarea
+                  value={card.description}
+                  onChange={(event) => updateHomeFeatureCard(index, "description", event.target.value)}
+                />
+              </label>
+            </div>
+          ))}
         </div>
       </section>
 

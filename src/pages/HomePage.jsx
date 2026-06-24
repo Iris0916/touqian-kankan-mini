@@ -31,18 +31,12 @@ function HomePage({ goTo, homeContent }) {
       </section>
 
       <section className="intro-grid" aria-label="核心能力">
-        <article>
-          <h2>轻量浏览</h2>
-          <p>首页给出产品定位，快速进入公司体验列表。</p>
-        </article>
-        <article>
-          <h2>搜索筛选</h2>
-          <p>通过关键词和类型筛选，模拟投递前查公司的过程。</p>
-        </article>
-        <article>
-          <h2>反馈闭环</h2>
-          <p>写下具体经历后，给后来的人多一点投递前参考。</p>
-        </article>
+        {homeContent.featureCards.map((card) => (
+          <article key={card.title}>
+            <h2>{card.title}</h2>
+            <p>{card.description}</p>
+          </article>
+        ))}
       </section>
     </main>
   );

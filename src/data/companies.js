@@ -247,4 +247,18 @@ export const homeContent = {
   title: "投前看看 Mini",
   subtitle: "一个轻量的求职体验参考工具，帮你在投递前查看岗位线索、面试体验和风险提醒。",
   reminder: "不急着下判断，先把薪资、职责、流程和试用期问清楚。",
+  featureCards: [
+    {
+      title: "轻量浏览",
+      description: "快速查看不同城市、岗位下的求职体验。",
+    },
+    {
+      title: "搜索筛选",
+      description: "按公司、城市、岗位和体验标签筛选，投递前先多看一点参考。",
+    },
+    {
+      title: "反馈闭环",
+      description: "写下你的真实经历，给后来的人多一点投递前参考。",
+    },
+  ],
 };

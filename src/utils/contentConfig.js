@@ -61,6 +61,9 @@ const normalizeConfig = (config) => {
     homeContent: {
       ...fallback.homeContent,
       ...(config?.homeContent || {}),
+      featureCards: config?.homeContent?.featureCards?.length
+        ? config.homeContent.featureCards
+        : fallback.homeContent.featureCards,
     },
     categories: normalizeCategories(config?.categories, fallback.categories),
     positiveExperienceTags: config?.positiveExperienceTags?.length
