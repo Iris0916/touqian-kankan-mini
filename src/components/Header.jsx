@@ -2,7 +2,6 @@ const navItems = [
   { label: "首页", route: "/" },
   { label: "公司体验", route: "/companies" },
   { label: "发布体验", route: "/submit" },
-  { label: "内容管理", route: "/admin" },
 ];
 
 function Header({ currentRoute, goTo }) {

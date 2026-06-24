@@ -73,6 +73,7 @@ function EditableList({ title, items, onChange, requiredFirstItem }) {
 function AdminPage({ config, onConfigSaved, onConfigReset }) {
   const [draft, setDraft] = useState(() => JSON.parse(JSON.stringify(config)));
   const [savedMessage, setSavedMessage] = useState("");
+  const isProduction = import.meta.env.PROD;
 
   const updateHome = (field, value) => {
     setDraft((currentDraft) => ({
@@ -199,9 +200,18 @@ function AdminPage({ config, onConfigSaved, onConfigReset }) {
         <div>
           <span className="eyebrow">Local Admin</span>
           <h1>内容管理</h1>
-          <p>当前内容管理页仅用于本地原型调试，数据保存在浏览器 localStorage 中，不会同步到服务器。</p>
+          <p>
+            当前内容管理页仅用于本地原型调试。数据保存在当前浏览器 localStorage
+            中，不会同步到服务器，也不会影响其他访问者看到的内容。
+          </p>
         </div>
       </div>
+
+      {isProduction ? (
+        <section className="guideline-box admin-warning">
+          这是原型调试页，不是正式后台。
+        </section>
+      ) : null}
 
       <section className="admin-actions">
         <button className="primary-button" type="button" onClick={saveDraft}>
